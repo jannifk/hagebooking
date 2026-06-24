@@ -2,20 +2,11 @@ export const metadata = { title: 'Hagekalender — Colletts gate 45' };
 
 export default function HagePage() {
   return (
-    <html lang="no">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-        <style dangerouslySetInnerHTML={{ __html: CSS }} />
-      </head>
-      <body>
-        <div dangerouslySetInnerHTML={{ __html: HTML }} />
-        <script dangerouslySetInnerHTML={{ __html: JS }} />
-      </body>
-    </html>
+    <>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
+      <div dangerouslySetInnerHTML={{ __html: HTML }} />
+      <script dangerouslySetInnerHTML={{ __html: JS }} />
+    </>
   );
 }
 
