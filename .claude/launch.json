@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "next-dev",
+      "runtimeExecutable": "/Users/janni.frederiksen.kalafatis@schibsted.com/.nvm/versions/node/v20.20.0/bin/node",
+      "runtimeArgs": [
+        "/Users/janni.frederiksen.kalafatis@schibsted.com/Downloads/boligverdi/node_modules/next/dist/bin/next",
+        "dev"
+      ],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}
