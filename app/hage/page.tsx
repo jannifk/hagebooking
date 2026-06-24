@@ -126,6 +126,11 @@ const HTML = `
 </header>
 
 <div class="main">
+  <section class="notes-section">
+    <h2>Kommende bestillinger</h2>
+    <div id="notesList"><div class="spinner"></div></div>
+  </section>
+
   <section class="garden-section">
     <div class="section-title-row">
       <h2 class="section-title">Hageoversikt</h2>
@@ -199,10 +204,6 @@ const HTML = `
     <div class="calendar-grid" id="calendarGrid"></div>
   </section>
 
-  <section class="notes-section">
-    <h2>Kommende bestillinger</h2>
-    <div id="notesList"><div class="spinner"></div></div>
-  </section>
 </div>
 
 <div id="modalOverlay" style="display:none;"></div>
