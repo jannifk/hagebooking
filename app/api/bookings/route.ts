@@ -41,25 +41,28 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const body = await req.json() as Booking;
-  if (!body.id || !body.zone || !body.date || !body.name) {
-    return NextResponse.json({ error: 'Ugyldig bestilling' }, { status: 400 });
-  }
-  const bookings = await readAll();
+  try {
+    const body = await req.json() as Booking;
+    if (!body.id || !body.zone || !body.date || !body.name) {
+      return NextResponse.json({ error: 'Ugyldig bestilling' }, { status: 400 });
+    }
+    const bookings = await readAll();
 
-  // Conflict check server-side
-  const conflict = bookings.some(b => {
-    if (b.date !== body.date) return false;
-    const zonesOverlap = b.zone === body.zone || b.zone === 'hele' || body.zone === 'hele';
-    return zonesOverlap;
-  });
-  if (conflict) {
-    return NextResponse.json({ error: 'Sonen er allerede booket denne dagen' }, { status: 409 });
-  }
+    const conflict = bookings.some(b => {
+      if (b.date !== body.date) return false;
+      return b.zone === body.zone || b.zone === 'hele' || body.zone === 'hele';
+    });
+    if (conflict) {
+      return NextResponse.json({ error: 'Sonen er allerede booket denne dagen' }, { status: 409 });
+    }
 
-  bookings.push(body);
-  await writeAll(bookings);
-  return NextResponse.json(body, { status: 201 });
+    bookings.push(body);
+    await writeAll(bookings);
+    return NextResponse.json(body, { status: 201 });
+  } catch (e) {
+    console.error('POST /api/bookings feilet:', e);
+    return NextResponse.json({ error: 'Noe gikk galt på serveren' }, { status: 500 });
+  }
 }
 
 export async function DELETE(req: Request) {
